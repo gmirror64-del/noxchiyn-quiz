@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#06140e" />
+  <meta name="description" content="Нохчийн Квиз — тест на знание чеченских традиций, истории и языка" />
+  <title>Нохчийн Квиз</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell" id="app" aria-live="polite">
+    <section class="screen welcome-screen" id="startScreen">
+      <div class="brand-mark" aria-hidden="true"><span>𐩒</span></div>
+      <p class="eyebrow">Традиции · история · язык</p>
+      <h1>Нохчийн<br /><em>Квиз</em></h1>
+      <p class="lead">Проверь, насколько глубоко ты знаешь культуру и наследие чеченского народа.</p>
+
+      <div class="glass-card setup-card">
+        <label class="field-label" for="difficulty">Уровень сложности</label>
+        <div class="select-wrap">
+          <select id="difficulty" aria-describedby="availableCount">
+            <option value="all">Все уровни</option>
+            <option value="easy">Лёгкие</option>
+            <option value="medium">Средние</option>
+            <option value="hard">Сложные</option>
+            <option value="expert">Хардкор</option>
+          </select>
+        </div>
+        <p class="available" id="availableCount">Загрузка вопросов…</p>
+        <button class="primary-button" id="startButton" type="button" disabled>Начать квиз <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="data-status" id="dataStatus">Загружаем вопросы…</p>
+      <p class="error-message" id="errorMessage" role="alert" hidden></p>
+    </section>
+
+    <section class="screen quiz-screen" id="quizScreen" hidden>
+      <header class="quiz-header">
+        <button class="icon-button" id="exitButton" type="button" aria-label="Вернуться к настройкам">×</button>
+        <div class="progress-copy"><span id="questionCounter">Вопрос 1 из 10</span><span id="scoreCounter">0 верных</span></div>
+      </header>
+      <div class="progress-track" aria-label="Прогресс квиза"><div class="progress-fill" id="progressFill"></div></div>
+      <article class="question-card" id="questionCard">
+        <div class="question-meta"><span class="category-badge" id="categoryBadge">Язык</span><span id="difficultyBadge">Средний</span></div>
+        <h2 id="questionText"></h2>
+      </article>
+      <div class="options" id="options" aria-label="Варианты ответа"></div>
+      <section class="explanation" id="explanation" hidden>
+        <p class="explanation-label">Почему так?</p>
+        <p id="explanationText"></p>
+        <button class="primary-button" id="nextButton" type="button">Следующий вопрос <span aria-hidden="true">→</span></button>
+      </section>
+    </section>
+
+    <section class="screen result-screen" id="resultScreen" hidden>
+      <p class="eyebrow">Твой результат</p>
+      <div class="result-ring" id="resultRing"><strong id="percentResult">0%</strong><span>правильных</span></div>
+      <h2 id="resultTitle"></h2>
+      <p class="result-description" id="resultDescription"></p>
+      <div class="glass-card result-score"><strong id="scoreResult">0 / 0</strong><span>правильных ответов</span></div>
+      <button class="primary-button" id="copyButton" type="button">Скопировать результат <span aria-hidden="true">↗</span></button>
+      <button class="secondary-button" id="restartButton" type="button">Пройти заново</button>
+      <p class="copy-message" id="copyMessage" role="status"></p>
+    </section>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
